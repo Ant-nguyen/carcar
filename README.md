@@ -2,10 +2,10 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Anthony Nguyen - Sales
+
 * Austin Hall - Service
-* Person 2 - Which microservice?
+* Anthony Nguyen - Sales
+
 
 ## Design
 
