@@ -21,7 +21,7 @@ function VehicleModelList(){
     const response = await fetch(url,fetchConfig)
     if (response.ok) {
       fetchVehicleModels()
-    } else {console.error('Failed to delete manufacturer:', response.status, response.statusText)
+    } else {console.error('Failed to delete model:', response.status, response.statusText)
   }
 
   }
@@ -31,7 +31,7 @@ function VehicleModelList(){
     <thead>
       <tr>
         <th>Name</th>
-        <th></th>
+        <th>Manufacturer</th>
       </tr>
     </thead>
     <tbody>
@@ -39,6 +39,7 @@ function VehicleModelList(){
         return (
           <tr key={models.id}>
               <td>{models.name}</td>
+              <td>{models.manufacturer.name}</td>
               <td><button onClick={() => handleDelete(models.id)} className="btn btn-danger">Remove</button></td>
           </tr>
           )
