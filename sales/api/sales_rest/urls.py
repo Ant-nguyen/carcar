@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from .views import api_list_customers,api_list_salesperson,api_list_sale
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import get_object_or_404
 from .models import Customer,Sale,Salesperson,AutomobileVO
 from common.json import ModelEncoder
 from django.views.decorators.http import require_http_methods
