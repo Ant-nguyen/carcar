@@ -8,7 +8,7 @@ class Customer(models.Model):
     phone_number = models.CharField(max_length=12)
 
 
-class Saleperson(models.Model):
+class Salesperson(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     employee_id = models.CharField(max_length=100)
@@ -25,7 +25,7 @@ class Sale(models.Model):
         on_delete = models.CASCADE
     )
     salesperson = models.ForeignKey(
-        Saleperson,
+        Salesperson,
         related_name = "sales",
         on_delete = models.CASCADE
     )
