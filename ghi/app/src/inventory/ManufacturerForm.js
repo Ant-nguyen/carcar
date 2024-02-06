@@ -26,8 +26,6 @@ function ManufacturerForm() {
         try {
             const response = await fetch(url, fetchConfig)
             if (response.ok) {
-                const newManufacturer = await response.json()
-
                 setManufacturer('')
             } else {
                 console.error('Server responded with an error:', response.status, response.statusText)
