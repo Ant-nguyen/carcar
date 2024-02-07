@@ -529,8 +529,8 @@ JSON Body should look like:
   "vin": "1N45HUI3H4JJI",
   "customer": "Dash",
   "date_time": "2024-02-06T14:30:00.000Z",
-	"technician": 2,
-	"reason": "oil change"
+  "technician": 2,
+  "reason": "oil change"
 }
 ```
 JSON response will look like:
@@ -551,7 +551,7 @@ JSON response will look like:
 }
 ```
 
-C. DELETE | `http://localhost:8080/api/technicians/id/`
+C. DELETE | `http://localhost:8080/api/appointments/id/`
 JSON response will look like:
 ```json
 {
@@ -559,7 +559,7 @@ JSON response will look like:
 }
 ```
 
-D. PUT | `http://localhost:8080/api/technicians/id/cancel/`
+D. PUT | `http://localhost:8080/api/appointments/id/cancel/`
 JSON response will look like:
 ```json
 {
@@ -578,7 +578,7 @@ JSON response will look like:
 }
 ```
 
-E. PUT | `http://localhost:8080/api/technicians/id/finish/`
+E. PUT | `http://localhost:8080/api/appointments/id/finish/`
 JSON response will look like:
 ```json
 {
