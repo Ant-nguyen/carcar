@@ -36,12 +36,11 @@ function TechnicianForm() {
                     last_name: '',
                     employee_id: '',
                 })
-
             } else {
-                console.error('Server responded with an error:', response.status, response.statusText)
+                console.error('Error:', response.status, response.statusText)
             }
         } catch (error) {
-            console.error('Error parsing JSON response:', error)
+            console.error('Error:', error.message)
         }
     }
 

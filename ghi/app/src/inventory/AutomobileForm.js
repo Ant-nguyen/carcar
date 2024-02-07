@@ -27,10 +27,10 @@ function AutomobileForm() {
                 const data = await response.json()
                 setModels(data.models)
             } else {
-                console.error('Failed to fetch models:', response.status, response.statusText)
+                console.error('Error:', response.status, response.statusText)
             }
         } catch (error) {
-            console.error('Error fetching models', error)
+            console.error('Error', error)
         }
     }
 
@@ -52,8 +52,6 @@ function AutomobileForm() {
         try {
             const response = await fetch(url, fetchConfig);
             if (response.ok) {
-                const newAutomobile = await response.json();
-
                 setFormData({
                     color: '',
                     year: '',
@@ -61,10 +59,10 @@ function AutomobileForm() {
                     model_id: '',
                 })
             } else {
-                console.error('Server responded with an error:', response.status, response.statusText);
+                console.error('Error:', response.status, response.statusText);
             }
         } catch (error) {
-            console.error('Error parsing JSON response:', error);
+            console.error('Error:', error);
         }
     }
 
