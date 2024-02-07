@@ -27,7 +27,6 @@ function AppointmentHistory() {
             if (response.ok) {
                 const data = await response.json()
                 setAutomobiles(data.autos)
-                console.log(data.autos)
             } else {
                 console.error('Error:', response.status, response.statusText)
             }
