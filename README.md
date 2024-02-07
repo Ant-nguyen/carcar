@@ -36,9 +36,12 @@ CarCar is made up of three main microservices back-end and 1 react app front-end
 
 ![img](https://i.imgur.com/YL3MY5d.png)
 
-## API Endpoints: For browser or Insomnia
+## Microservices details
 
 ### Inventory
+<details><summary>Inventory diagram</summary>
+![img](https://i.imgur.com/CxkrqCO.png)
+</details>
 
 #### `Manufacturers `
 
@@ -233,6 +236,20 @@ JSON Body for POST should look like example below:
 JSON response will look like an individual GET see **C**  above
 
 ### Sales
+<details><summary>Sales diagram</summary>
+![img](https://i.imgur.com/AvRn58b.png)
+</details>
+
+**Sales has 4 models:**
+
+*Customers* has fields that are independent of any other models of services, simply information such as name address and phone number. The true unique identifier is the database ID, which is what most references between customers rely on.
+
+*Salesperson* is similar to customers except instead of name and phone number, they have an `employee_id` that is sort of like a username. Still the unique identifier is based on database ID.
+
+*Sale* represent a sale of a car from the dealership. It comprise of a `customer`, `salesperson`, `automobile` and `price`. Customer,  salesperson and automobile are all foreign keys to their respective models in the sales microservice. Once an auto mobile is sold, in the react front end, it will do a PUT method to the Automobile model in *Inventory* microservices, to change sold status to `true`
+
+*AutomobileVO* is a value object model that matches the automobile model in *Inventory* services, except it only contains the information we need in a our specific Sales microservice. It is able to maintain being up to date by a poller that gathers the data in "main" Automobile in Inventory and capture any changes updates them within the sales microservice.
+
 #### `Salesperson`
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
@@ -399,7 +416,12 @@ response will look like:
 
 C. DELETE | `http://localhost:8090/api/sales/id/`
 Will return a JSON response with true or false depending if something was deleted.
+
 ### Services
+<details><summary>Service diagram</summary>
+![img](https://i.imgur.com/AuSpEeU.png)
+</details>
+The Service microservice is used to create, list, delete, technicians; and create, list, delete, and edit appoinments. It stores the first name, last name, and employee id of a technician; and stores the vin of the automobile being serviced, customer, date/time, technician, and reason for visit of an appointment. It uses a poller to get a list of automobiles in inventory from the Inventory microservice and stores each of their vins and whether or not they have been sold in an automobile value object or AutomobileVO. This AutomobileVO is used when listing service history to identify which appointments are VIP appointments.
 #### `Technicians`
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
@@ -574,23 +596,3 @@ JSON response will look like:
 	"status": "finished"
 }
 ```
-## Service microservice
-<details><summary>Service diagram</summary>
-![img](https://i.imgur.com/AuSpEeU.png)
-</details>
-The Service microservice is used to create, list, delete, technicians; and create, list, delete, and edit appoinments. It stores the first name, last name, and employee id of a technician; and stores the vin of the automobile being serviced, customer, date/time, technician, and reason for visit of an appointment. It uses a poller to get a list of automobiles in inventory from the Inventory microservice and stores each of their vins and whether or not they have been sold in an automobile value object or AutomobileVO. This AutomobileVO is used when listing service history to identify which appointments are VIP appointments.
-
-## Sales microservice
-<details><summary>Sales diagram</summary>
-![img](https://i.imgur.com/AvRn58b.png)
-</details>
-
-**Sales has 4 models:**
-
-*Customers* has fields that are independent of any other models of services, simply information such as name address and phone number. The true unique identifier is the database ID, which is what most references between customers rely on.
-
-*Salesperson* is similar to customers except instead of name and phone number, they have an `employee_id` that is sort of like a username. Still the unique identifier is based on database ID.
-
-*Sale* represent a sale of a car from the dealership. It comprise of a `customer`, `salesperson`, `automobile` and `price`. Customer,  salesperson and automobile are all foreign keys to their respective models in the sales microservice. Once an auto mobile is sold, in the react front end, it will do a PUT method to the Automobile model in *Inventory* microservices, to change sold status to `true`
-
-*AutomobileVO* is a value object model that matches the automobile model in *Inventory* services, except it only contains the information we need in a our specific Sales microservice. It is able to maintain being up to date by a poller that gathers the data in "main" Automobile in Inventory and capture any changes updates them within the sales microservice. 
