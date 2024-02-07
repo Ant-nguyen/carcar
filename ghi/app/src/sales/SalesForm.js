@@ -106,7 +106,7 @@ function SalesForm(){
         <div className="mb-3">
           <label htmlFor="automobile">Customer</label>
           <select onChange={handleFormChange} value={salesform.customer} required id="customer" name = "customer" className="form-select">
-          <option value="">Choose a salesperson</option>
+          <option value="">Choose a customer</option>
           {customers.map(customer => {
           return (
             <option key= {customer.id} value={customer.id}>{customer.first_name} {customer.last_name} - {customer.phone_number}</option>);})}
