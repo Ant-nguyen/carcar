@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 function AppointmentList() {
     const [appointments, setAppointments] = useState([])
-
+    const [automobiles, setAutomobiles] = useState([])
+    
     const fetchAppointments = async () => {
         let url = "http://localhost:8080/api/appointments/"
         try {
