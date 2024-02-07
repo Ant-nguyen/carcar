@@ -333,6 +333,7 @@ Will return a JSON response with true or false depending if something was delete
 |C. Delete a sale | DELETE | `http://localhost:8090/api/sales/id/`
 
 A. GET | `http://localhost:8090/api/sales/`
+
 ### Services
 ## Service microservice
 
