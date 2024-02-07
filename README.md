@@ -404,7 +404,11 @@ Will return a JSON response with true or false depending if something was delete
 
 ## Service microservice
 
+<details><summary>Service diagram</summary>
 ![img](https://i.imgur.com/AuSpEeU.png)
+</details>
 
 ## Sales microservice
+<details><summary>Sales diagram</summary>
 ![img](https://i.imgur.com/AvRn58b.png)
+</details>
