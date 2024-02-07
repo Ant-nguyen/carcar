@@ -1,7 +1,8 @@
 import { useEffect,useState } from "react";
 
-function VehicleModelList(){
+function VehicleModelList() {
   const [vehicleModels, setVehicleModel] = useState([])
+
   const fetchVehicleModels = async() =>{
     let url = "http://localhost:8100/api/models/"
     let response = await fetch(url)
@@ -18,12 +19,16 @@ function VehicleModelList(){
     const fetchConfig = {
       method: "delete"
     }
-    const response = await fetch(url,fetchConfig)
-    if (response.ok) {
-      fetchVehicleModels()
-    } else {console.error('Failed to delete model:', response.status, response.statusText)
-  }
-
+    try {
+      const response = await fetch(url,fetchConfig)
+      if (response.ok) {
+        fetchVehicleModels()
+      } else {
+        console.error('Error:', response.status, response.statusText)
+      }
+    } catch (error) {
+        console.error('Error', error)
+      }
   }
   return(
     <div className="offset-3 col-6">

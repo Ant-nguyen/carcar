@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 
 function AppointmentList() {
     const [appointments, setAppointments] = useState([])
+
     const fetchAppointments = async () => {
         let url = "http://localhost:8080/api/appointments/"
-        let response = await fetch(url)
-        if (response.ok) {
-            const data = await response.json()
-            setAppointments(data.appointments)
+        try {
+            let response = await fetch(url)
+            if (response.ok) {
+                const data = await response.json()
+                setAppointments(data.appointments)
+            } else {
+                console.error('Error:', response.status, response.statusText)
+            }
+        } catch (error) {
+            console.error('Error', error.message)
         }
     }
 
@@ -18,11 +25,15 @@ function AppointmentList() {
         const fetchConfig = {
             method: "put"
         }
-        const response = await fetch(url, fetchConfig)
-        if (response.ok) {
-            fetchAppointments()
-        } else {
-            console.error('Failed to cancel appointment:', response.status, response.statusText)
+        try {
+            const response = await fetch(url, fetchConfig)
+            if (response.ok) {
+                fetchAppointments()
+            } else {
+                console.error('Error:', response.status, response.statusText)
+            }
+        } catch (error) {
+            console.error('Error', error.message)
         }
     }
 
@@ -31,14 +42,18 @@ function AppointmentList() {
         const fetchConfig = {
             method: "put"
         }
-        const response = await fetch(url, fetchConfig)
-        if (response.ok) {
-            fetchAppointments()
-        } else {
-            console.error('Failed to finish appointment:', response.status, response.statusText)
+        try {
+            const response = await fetch(url, fetchConfig)
+            if (response.ok) {
+                fetchAppointments()
+            } else {
+                console.error('Error:', response.status, response.statusText)
+            }
+        } catch (error) {
+            console.error('Error', error.message)
         }
-
     }
+
     return (
         <div className="offset-3 col-6">
             <table className="table table-striped">
