@@ -8,10 +8,10 @@
 
 **Requires Docker and Git**
 
-1. Fork the repository here: https://gitlab.com/npcsloan/project-
+1. Fork the repository here: https://gitlab.com/npcsloan/project-beta.git
 
 2. Clone your forked directory to your local machine.
-   `git clone https://gitlab.com/XXXXXXXnotThisLinkButYours
+   `git clone https://gitlab.com/XXXXXXXnotThisLinkButYours`
 
 3. In your terminal `cd` to your forked directory. Build a docker volume and build the doceker containers. You should be on same level as the *docker-compose.yml* file.
 ```
@@ -37,7 +37,7 @@ CarCar is made up of three main microservices back-end and 1 react app front-end
 ![img](https://i.imgur.com/YL3MY5d.png)
 
 ## Project Overview
-CarCar is an application designed to manage inventory, employees, customers, and appointments for car dealerships. CarCar has three microservices, Inventory, Sales, Service; which each uses a separate postgres database to store their individual data. Below the details of each individual microservice are listed.
+CarCar is an application designed to manage *inventory*, *employees*, *customers*, and *appointments* for car dealerships. CarCar has three microservices, *Inventory*, *Sales*, *Service*; which each uses a separate postgres database to store their individual data. The details of each individual microservice are listed below.
 
 ## Microservices details
 
@@ -45,8 +45,10 @@ CarCar is an application designed to manage inventory, employees, customers, and
 <details><summary>Inventory diagram</summary>
 ![img](https://i.imgur.com/CxkrqCO.png)
 </details>
-The Inventory microservice is used to create, list, delete, and edit manufacturers, models, and automobiles. It stores the name of manufacturers; the name, picture, and manufacturer_id of models; and the color, year, vin, and model_id of automobiles. This microservice is polled by both the Sales and Service microservices for a list of automobiles.
-#### `Manufacturers `
+
+The Inventory microservice is used to create, list, delete, and edit *manufacturers*, *models*, and *automobiles*. It stores the name of *manufacturers*; the `name`, `picture_url`, and `manufacturer.id` of *models*; and the `color`, `year`, `vin`, and `model.id` of *automobiles*. This microservice is polled by both the Sales and Service microservices for a list of automobiles.
+
+#### `Manufacturers`
 
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
@@ -424,7 +426,8 @@ Will return a JSON response with true or false depending if something was delete
 <details><summary>Service diagram</summary>
 ![img](https://i.imgur.com/AuSpEeU.png)
 </details>
-The Service microservice is used to create, list, delete, technicians; and create, list, delete, and edit appoinments. It stores the first name, last name, and employee id of a technician; and stores the vin of the automobile being serviced, customer, date/time, technician, and reason for visit of an appointment. It uses a poller to get a list of automobiles in inventory from the Inventory microservice and stores each of their vins and whether or not they have been sold in an automobile value object or AutomobileVO. This AutomobileVO is used when listing service history to identify which appointments are VIP appointments.
+
+The Service microservice is used to create, list, and delete *technicians*; and create, list, delete, and edit *appoinments*. It stores the `first_name`, `last_name`, and `employee_id` of a *technician*; and stores the `vin` of the automobile being serviced, `customer`, `date_time`, `technician.id`, and `reason` for visit of an appointment. It uses a poller to get a list of automobiles in inventory from the Inventory microservice and stores each of their `vin`s and whether or not they have been `sold` in an automobile value object or *AutomobileVO*. This *AutomobileVO* is used when listing service history to identify which appointments are VIP appointments.
 
 #### `Technicians`
 | Action | Method | URL
