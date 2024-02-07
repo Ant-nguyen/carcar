@@ -41,8 +41,8 @@ function AppointmentHistory() {
     }
 
     const filteredAppointments = vin.length > 0 ? appointments.filter(appointment => appointment.vin.startsWith(vin)) : appointments
-    const vips = automobiles.map(automobile => automobile.vin)
-    
+    const vips = automobiles.filter(automobile => automobile.sold === true).map(automobile => automobile.vin)
+
     return (
         <div className="my-5 container">
             <form onSubmit={handleSubmit} id="create-technician-form">
@@ -71,7 +71,7 @@ function AppointmentHistory() {
                             return (
                                 <tr key={appointment.id}>
                                     <td>{appointment.vin}</td>
-                                    <td>{vips.includes(appointment.vin) ? 'Yes' : 'No'}</td>
+                                    <td>{(vips.includes(appointment.vin) ? 'Yes' : 'No')}</td>
                                     <td>{appointment.customer}</td>
                                     <td>{appointment.date_time}</td>
                                     <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
