@@ -5,17 +5,17 @@ function ManufacturerList() {
 
     const fetchManufacturers = async () => {
         const url = 'http://localhost:8100/api/manufacturers/'
-        const response = await fetch(url)
 
         try {
+            const response = await fetch(url)
             if (response.ok) {
                 const data = await response.json()
                 setManufacturers(data.manufacturers)
             } else {
-                console.error('Failed to fetch manufacturers:', response.status, response.statusText)
+                console.error('Error:', response.status, response.statusText)
             }
         } catch (error) {
-            console.error('Error fetching manufacturers', error)
+            console.error('Error', error)
         }
     }
 
@@ -33,10 +33,10 @@ function ManufacturerList() {
             if (response.ok) {
                 fetchManufacturers()
             } else {
-                console.error('Failed to delete manufacturer:', response.status, response.statusText)
+                console.error('Error:', response.status, response.statusText)
             }
         } catch (error) {
-            console.error('Error deleting manufacturer', error)
+            console.error('Error', error)
         }
     }
 

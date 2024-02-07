@@ -10,6 +10,7 @@ function AutomobileList(){
       setAutomobiles(data.autos)
     }
   }
+  
   useEffect(()=>{fetchAutomobiles()},[])
 
   const handleDelete = async(vin) =>{
@@ -17,37 +18,43 @@ function AutomobileList(){
     const fetchConfig = {
       method: "delete"
     }
-    const response = await fetch(url,fetchConfig)
-    if (response.ok) {
-      fetchAutomobiles()
-    } else {console.error('Failed to delete Automobile:', response.status, response.statusText)
+    try {
+      const response = await fetch(url,fetchConfig)
+      if (response.ok) {
+        fetchAutomobiles()
+      } else {
+          console.error('Error:', response.status, response.statusText)
+      }
+    } catch (error) {
+      console.error('Error:', error.message)
+    }
   }
-  }
+
   return (
-    <div className="offset-3 col-6">
-    <table className="table table-striped">
-    <thead>
-      <tr>
-        <th>VIN</th>
-        <th>Color</th>
-        <th>Year</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      {automobiles.map(automobile => {
-        return (
-          <tr key={automobile.id}>
-              <td>{automobile.vin}</td>
-              <td>{automobile.color}</td>
-              <td>{automobile.year}</td>
-              <td>{automobile.sold ? "Sold":"Not sold"}</td>
-          </tr>
-          )
-      })}
-    </tbody>
-    </table>
-    </div>
+      <div className="offset-3 col-6">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>VIN</th>
+              <th>Color</th>
+              <th>Year</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {automobiles.map(automobile => {
+              return (
+                <tr key={automobile.id}>
+                  <td>{automobile.vin}</td>
+                  <td>{automobile.color}</td>
+                  <td>{automobile.year}</td>
+                  <td>{automobile.sold ? "Sold":"Not sold"}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
   )
 }
 

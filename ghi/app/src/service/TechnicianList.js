@@ -4,10 +4,16 @@ function TechnicianList() {
     const [technicians, setTechnicians] = useState([])
     const fetchTechnicians = async () => {
         let url = "http://localhost:8080/api/technicians/"
-        let response = await fetch(url)
-        if (response.ok) {
-            const data = await response.json()
-            setTechnicians(data.technicians)
+        try {
+            let response = await fetch(url)
+            if (response.ok) {
+                const data = await response.json()
+                setTechnicians(data.technicians)
+            } else {
+                console.error('Error:', response.status, response.statusText)
+            }
+        } catch (error) {
+            console.error('Error:', error.message)
         }
     }
 
@@ -18,14 +24,18 @@ function TechnicianList() {
         const fetchConfig = {
             method: "delete"
         }
-        const response = await fetch(url, fetchConfig)
-        if (response.ok) {
-            fetchTechnicians()
-        } else {
-            console.error('Failed to delete technician:', response.status, response.statusText)
+        try {
+            const response = await fetch(url, fetchConfig)
+            if (response.ok) {
+                fetchTechnicians()
+            } else {
+                console.error('Failed to delete technician:', response.status, response.statusText)
+            }
+        } catch (error) {
+            console.error('Error', error.message)
         }
-
     }
+    
     return (
         <div className="offset-3 col-6">
             <table className="table table-striped">

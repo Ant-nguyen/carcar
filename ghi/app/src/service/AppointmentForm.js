@@ -29,10 +29,10 @@ function AppointmentForm() {
                 const data = await response.json()
                 setTechnicians(data.technicians)
             } else {
-                console.error('Failed to fetch technicians:', response.status, response.statusText)
+                console.error('Error:', response.status, response.statusText)
             }
         } catch (error) {
-            console.error('Error fetching technicians', error)
+            console.error('Error', error.message)
         }
     }
 
@@ -70,10 +70,10 @@ function AppointmentForm() {
                 })
 
             } else {
-                console.error('Server responded with an error:', response.status, response.statusText)
+                console.error('Error:', response.status, response.statusText)
             }
         } catch (error) {
-            console.error('Error parsing JSON response:', error)
+            console.error('Error:', error.message)
         }
     }
 

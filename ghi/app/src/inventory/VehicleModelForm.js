@@ -19,10 +19,16 @@ function VehicleModelForm(){
 
 	let fetchManufacturer = async() =>{
 		let apiurl = 'http://localhost:8100/api/manufacturers/'
-		let response = await fetch(apiurl)
-		if(response.ok){
-			let data = await response.json()
-			setManufacturers(data.manufacturers)
+		try {
+			let response = await fetch(apiurl)
+			if(response.ok){
+				let data = await response.json()
+				setManufacturers(data.manufacturers)
+			} else {
+				console.error('Error:', response.status, response.statusText)
+			}
+		} catch (error) {
+			console.error('Error', error)
 		}
 	}
 
@@ -38,15 +44,21 @@ function VehicleModelForm(){
 			body: JSON.stringify(data),
 			headers: {'Content-Type': 'application/json'}
 		}
-		let response = await fetch(url,fetchConfig)
-		if(response.ok){
-			const LeData = await response.json();
-			console.log(LeData)
-			setModelForm({
-				name:"",
-				picture_url:"",
-				manufacturer_id:""
-			})
+		try {
+			let response = await fetch(url,fetchConfig)
+			if(response.ok){
+				const data = await response.json();
+				console.log(data)
+				setModelForm({
+					name:"",
+					picture_url:"",
+					manufacturer_id:""
+				})
+			} else {
+				console.error('Error:', response.status, response.statusText)
+			}
+		} catch (error) {
+			console.error('Error', error)
 		}
 	}
 
