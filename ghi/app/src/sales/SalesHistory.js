@@ -15,9 +15,15 @@ function SalesHistory(){
   let fetchPeople = async() =>{
     let url = "http://localhost:8090/api/salespeople/"
     let response = await fetch(url)
-    if(response.ok){
+    try{
+      if(response.ok){
       let data = await response.json()
       setSalespeople(data.salespeople)
+    }else {
+      console.error('Error:', response.status, response.statusText)
+    }
+    }catch(error){
+      console.error('Error', error.message)
     }
   }
   let fetchSales = async() =>{
