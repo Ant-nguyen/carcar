@@ -36,13 +36,16 @@ CarCar is made up of three main microservices back-end and 1 react app front-end
 
 ![img](https://i.imgur.com/YL3MY5d.png)
 
+## Project Overview
+CarCar is an application designed to manage inventory, employees, customers, and appointments for car dealerships. CarCar has three microservices, Inventory, Sales, Service; which each uses a separate postgres database to store their individual data. Below the details of each individual microservice are listed.
+
 ## Microservices details
 
 ### Inventory
 <details><summary>Inventory diagram</summary>
 ![img](https://i.imgur.com/CxkrqCO.png)
 </details>
-
+The Inventory microservice is used to create, list, delete, and edit manufacturers, models, and automobiles. It stores the name of manufacturers; the name, picture, and manufacturer_id of models; and the color, year, vin, and model_id of automobiles. This microservice is polled by both the Sales and Service microservices for a list of automobiles.
 #### `Manufacturers `
 
 | Action | Method | URL
