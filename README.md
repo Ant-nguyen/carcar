@@ -34,7 +34,7 @@ CarCar is made up of three main microservices back-end and 1 react app front-end
 - *Sales*
 - *Services*
 
-![img](https://i.imgur.com/1UvMER4.png)
+![img](https://i.imgur.com/YL3MY5d.png)
 
 ## API Endpoints: For browser or Insomnia
 
@@ -64,8 +64,7 @@ JSON body response should look like:
 }
 ```
 
-B. POST | `http://localhost:8100/api/manufacturers/`
-&
+B. POST | `http://localhost:8100/api/manufacturers/ |`
 D. PUT | `http://localhost:8100/api/manufacturers/id/`
 JSON `POST` and `PUT` format should look like:
 ```json
@@ -116,7 +115,6 @@ JSON body response should look like:
 ```
 
 B. POST | `http://localhost:8100/api/models/`
-&
 D. PUT | `http://localhost:8100/api/manufacturers/id/`
 JSON `POST` and `PUT` format should look like:
 ```json
@@ -222,7 +220,7 @@ JSON response
 }
 ```
 
-D. PUT |`http://localhost:8100/api/models/id/`
+D. PUT |` http://localhost:8100/api/models/id/`
 JSON Body for POST should look like example below:
 ```json
 {
@@ -333,14 +331,81 @@ Will return a JSON response with true or false depending if something was delete
 |C. Delete a sale | DELETE | `http://localhost:8090/api/sales/id/`
 
 A. GET | `http://localhost:8090/api/sales/`
+JSON response will look like:
+```json
+{
+	"sales": [
+		{
+			"id": 13,
+			"automobile": {
+				"id": 1,
+				"vin": "JH4DB1541NS001519",
+				"sold": true
+			},
+			"salesperson": {
+				"id": 2,
+				"first_name": "Ant",
+				"last_name": "Nguy",
+				"employee_id": "AntWin"
+			},
+			"customer": {
+				"id": 4,
+				"first_name": "Tony JR",
+				"last_name": "Soprano",
+				"address": "14 Aspen Drive, Caldwell, New Jersey",
+				"phone_number": "9177854568"
+			},
+			"price": 123456
+		}
+	]
+}
+```
 
+B. POST `|http://localhost:8090/api/sales/`
+JSON body should look like:
+```json
+{
+	"automobile":"JH4DB1541NS001520",
+	"salesperson":2,
+	"customer":1,
+	"price":30000
+}
+```
+response will look like:
+```json
+{
+	"id": 7,
+	"automobile": {
+		"id": 2,
+		"vin": "JH4DB1541NS001520",
+		"sold": false
+	},
+	"salesperson": {
+		"id": 2,
+		"first_name": "Ant",
+		"last_name": "Nguy",
+		"employee_id": "AntWin"
+	},
+	"customer": {
+		"id": 1,
+		"first_name": "Tony",
+		"last_name": "Soprano",
+		"address": "14 Aspen Drive, Caldwell, New Jersey",
+		"phone_number": "9175550157"
+	},
+	"price": 30000
+}
+```
+
+C. DELETE | `http://localhost:8090/api/sales/id/`
+Will return a JSON response with true or false depending if something was deleted.
 ### Services
+
+
 ## Service microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+![img](https://i.imgur.com/AuSpEeU.png)
 
 ## Sales microservice
+![img](https://i.imgur.com/AvRn58b.png)
 
-Explain your models and integration with the inventory
-microservice, here.
