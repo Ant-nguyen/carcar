@@ -400,13 +400,185 @@ response will look like:
 C. DELETE | `http://localhost:8090/api/sales/id/`
 Will return a JSON response with true or false depending if something was deleted.
 ### Services
+#### `Technicians`
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+|A. List technicians | GET | `http://localhost:8080/api/technicians/`
+|B. Create a technician | POST | `http://localhost:8080/api/technicians/`
+|C. Delete a technician | DELETE | `http://localhost:8080/api/technicians/id/`
 
+A. GET | `http://localhost:8080/api/technicians/`
+JSON response will look like:
+```json
+{
+	"technicians": [
+		{
+			"id": 1,
+			"first_name": "Walter",
+			"last_name": "White",
+			"employee_id": "Heisenberg"
+		},
+		{
+			"id": 2,
+			"first_name": "Berry",
+			"last_name": "Seinfield",
+			"employee_id": "bfield"
+		}
+	]
+}
+```
 
+B. POST | `http://localhost:8080/api/technicians/`
+JSON Body should look like:
+```json
+{
+  "first_name": "Berry",
+  "last_name": "Seinfield",
+  "employee_id": "bfield"
+}
+```
+JSON response will look like:
+```json
+{
+	"id": 2,
+	"first_name": "Berry",
+	"last_name": "Seinfield",
+	"employee_id": "bfield"
+}
+```
+
+C. DELETE | `http://localhost:8080/api/technicians/id/`
+JSON response will look like:
+```json
+{
+	"deleted": true
+}
+```
+#### `Appointments`
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+|A. List appointments | GET | `http://localhost:8080/api/appointments/`
+|B. Create an appointment | POST | `http://localhost:8080/api/appointments/`
+|C. Delete an appointment | DELETE | `http://localhost:8080/api/appointments/id/`
+|D. Cancel an appointment | PUT | `http://localhost:8080/api/appointments/id/cancel/`
+|E. Finish an appointment | PUT | `http://localhost:8080/api/appointments/id/finish/`
+
+A. GET | `http://localhost:8080/api/appointments/`
+JSON response will look like:
+```json
+{
+	"appointments": [
+		{
+			"id": 1,
+			"vin": "13UI5N1J13BH43",
+			"customer": "Jesse",
+			"date_time": "2024-02-14T09:30:00+00:00",
+			"technician": {
+				"id": 1,
+				"first_name": "Walter",
+				"last_name": "White",
+				"employee_id": "Heisenberg"
+			},
+			"reason": "Brake Change",
+			"status": "finished"
+		},
+		{
+			"id": 2,
+			"vin": "14UIHB51IHI12",
+			"customer": "Jane",
+			"date_time": "2024-02-22T08:15:00+00:00",
+			"technician": {
+				"id": 1,
+				"first_name": "Walter",
+				"last_name": "White",
+				"employee_id": "Heisenberg"
+			},
+			"reason": "Oil Filter",
+			"status": "canceled"
+		}
+	]
+}
+```
+
+B. POST | `http://localhost:8080/api/appointments/`
+JSON Body should look like:
+```json
+{
+  "vin": "1N45HUI3H4JJI",
+  "customer": "Dash",
+  "date_time": "2024-02-06T14:30:00.000Z",
+	"technician": 2,
+	"reason": "oil change"
+}
+```
+JSON response will look like:
+```json
+{
+	"id": 5,
+	"vin": "1N45HUI3H4JJI",
+	"customer": "Dash",
+	"date_time": "2024-02-06T14:30:00.000Z",
+	"technician": {
+		"id": 2,
+		"first_name": "Berry",
+		"last_name": "Seinfield",
+		"employee_id": "berry"
+	},
+	"reason": "oil change",
+	"status": "created"
+}
+```
+
+C. DELETE | `http://localhost:8080/api/technicians/id/`
+JSON response will look like:
+```json
+{
+	"deleted": true
+}
+```
+
+D. PUT | `http://localhost:8080/api/technicians/id/cancel/`
+JSON response will look like:
+```json
+{
+	"id": 4,
+	"vin": "1N45HUI3H4JJI",
+	"customer": "Dash",
+	"date_time": "2024-02-06T14:30:00+00:00",
+	"technician": {
+		"id": 1,
+		"first_name": "Walter",
+		"last_name": "White",
+		"employee_id": "Heisenberg"
+	},
+	"reason": "oil change",
+	"status": "canceled"
+}
+```
+
+E. PUT | `http://localhost:8080/api/technicians/id/finish/`
+JSON response will look like:
+```json
+{
+	"id": 4,
+	"vin": "1N45HUI3H4JJI",
+	"customer": "Dash",
+	"date_time": "2024-02-06T14:30:00+00:00",
+	"technician": {
+		"id": 1,
+		"first_name": "Walter",
+		"last_name": "White",
+		"employee_id": "Heisenberg"
+	},
+	"reason": "oil change",
+	"status": "finished"
+}
+```
 ## Service microservice
-
 <details><summary>Service diagram</summary>
 ![img](https://i.imgur.com/AuSpEeU.png)
 </details>
+The Service microservice is used to create, list, delete, technicians; and create, list, delete, and edit appoinments. It stores the first name, last name, and employee id of a technician; and stores the vin of the automobile being serviced, customer, date/time, technician, and reason for visit of an appointment. It uses a poller to get a list of automobiles in inventory from the Inventory microservice and stores each of their vins and whether or not they have been sold in an automobile value object or AutomobileVO. This AutomobileVO is used when listing service history to identify which appointments are VIP appointments.
 
 ## Sales microservice
 <details><summary>Sales diagram</summary>
