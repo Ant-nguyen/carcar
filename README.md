@@ -327,7 +327,7 @@ Will return a JSON response with true or false depending if something was delete
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
 |A. List sales | GET | `http://localhost:8090/api/sales/`
-|B. Create a sale | POST `|http://localhost:8090/api/sales/`
+|B. Create a sale | POST |`http://localhost:8090/api/sales/`
 |C. Delete a sale | DELETE | `http://localhost:8090/api/sales/id/`
 
 A. GET | `http://localhost:8090/api/sales/`
@@ -408,4 +408,3 @@ Will return a JSON response with true or false depending if something was delete
 
 ## Sales microservice
 ![img](https://i.imgur.com/AvRn58b.png)
-
