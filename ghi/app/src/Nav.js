@@ -14,19 +14,19 @@ function Nav() {
               <NavLink className="nav-link" end to="/manufacturers">Manufacturers</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturers/new">Create a Manufacturer</NavLink>
+              <NavLink className="nav-link" to="/manufacturers/new">Add a Manufacturer</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" end to="/models">Models</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/models/new">Create a Model</NavLink>
+              <NavLink className="nav-link" to="/models/new">Add a Model</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" end to="/automobiles">Automobiles</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/automobiles/new">Create an Automobile</NavLink>
+              <NavLink className="nav-link" to="/automobiles/new">Add an Automobile</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" end to="/salespeople">Salespeople</NavLink>
@@ -59,7 +59,7 @@ function Nav() {
               <NavLink className="nav-link" end to="/appointments">Service Appointments</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/appointments/new">Create a Service Appointment</NavLink>
+              <NavLink className="nav-link" to="/appointments/new">Add a Service Appointment</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/appointments/history"> Service History</NavLink>

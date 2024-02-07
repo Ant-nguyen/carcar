@@ -10,7 +10,7 @@ function AutomobileList(){
       setAutomobiles(data.autos)
     }
   }
-  
+
   useEffect(()=>{fetchAutomobiles()},[])
 
   const handleDelete = async(vin) =>{
@@ -31,13 +31,15 @@ function AutomobileList(){
   }
 
   return (
-      <div className="offset-3 col-6">
+      <div className="offset-2 col-8">
         <table className="table table-striped">
           <thead>
             <tr>
               <th>VIN</th>
               <th>Color</th>
               <th>Year</th>
+              <th>Model</th>
+              <th>Manufacturer</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -48,6 +50,8 @@ function AutomobileList(){
                   <td>{automobile.vin}</td>
                   <td>{automobile.color}</td>
                   <td>{automobile.year}</td>
+                  <td>{automobile.model.name}</td>
+                  <td>{automobile.model.manufacturer.name}</td>
                   <td>{automobile.sold ? "Sold":"Not sold"}</td>
                 </tr>
               )

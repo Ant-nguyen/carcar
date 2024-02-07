@@ -47,8 +47,6 @@ function VehicleModelForm(){
 		try {
 			let response = await fetch(url,fetchConfig)
 			if(response.ok){
-				const data = await response.json();
-				console.log(data)
 				setModelForm({
 					name:"",
 					picture_url:"",

@@ -24,8 +24,6 @@ function SalespersonForm(){
     try{
       let response = await fetch(url,fetchConfig)
       if(response.ok){
-        let data = await response.json()
-        console.log(data)
         setSalesForm({
           first_name:"",
           last_name:"",

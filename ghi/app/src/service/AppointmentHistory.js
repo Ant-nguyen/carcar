@@ -76,8 +76,8 @@ function AppointmentHistory() {
                                     <td>{(vips.includes(appointment.vin) ? 'Yes' : 'No')}</td>
                                     <td>{appointment.customer}</td>
                                     <td>{appointment.date_time}</td>
-                                    <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                                     <td>{appointment.reason}</td>
+                                    <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                                     <td>{appointment.status}</td>
                                 </tr>
                             )
