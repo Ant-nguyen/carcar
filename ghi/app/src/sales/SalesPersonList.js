@@ -17,6 +17,7 @@ function SalesPersonList(){
 
   return(
     <div className="offset-3 col-6">
+      <h1>Salespeople</h1>
       <table className="table table-striped">
         <thead>
           <tr>

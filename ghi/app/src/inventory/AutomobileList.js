@@ -8,7 +8,6 @@ function AutomobileList(){
     if(response.ok){
       let data = await response.json()
       setAutomobiles(data.autos)
-      console.log(data.autos)
     }
   }
   useEffect(()=>{fetchAutomobiles()},[])
@@ -32,6 +31,7 @@ function AutomobileList(){
         <th>VIN</th>
         <th>Color</th>
         <th>Year</th>
+        <th>Status</th>
       </tr>
     </thead>
     <tbody>
@@ -41,7 +41,7 @@ function AutomobileList(){
               <td>{automobile.vin}</td>
               <td>{automobile.color}</td>
               <td>{automobile.year}</td>
-              <td><button onClick={() => handleDelete(automobile.vin)} className="btn btn-danger">Remove</button></td>
+              <td>{automobile.sold ? "Sold":"Not sold"}</td>
           </tr>
           )
       })}

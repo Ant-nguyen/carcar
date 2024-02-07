@@ -16,6 +16,7 @@ function CustomerList(){
 
   return(
     <div className="offset-2 col-8">
+      <h1>Customers</h1>
       <table className="table table-striped">
         <thead>
           <tr>
