@@ -48,7 +48,7 @@ CarCar is made up of three main microservices back-end and 1 react app front-end
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
 |A. List manufacturers | GET | `http://localhost:8100/api/manufacturers/`
-|B. Create a manufacturer | POST | `http://localhost:8100/api/manufacturers/ |`
+|B. Create a manufacturer | POST | `http://localhost:8100/api/manufacturers/`
 |C. Get a specific manufacturer | GET | `http://localhost:8100/api/manufacturers/id/`
 |D. Update a specific manufacturer | PUT | `http://localhost:8100/api/manufacturers/id/`
 |E. Delete a specific manufacturer | DELETE | `http://localhost:8100/api/manufacturers/id/`
@@ -422,6 +422,7 @@ Will return a JSON response with true or false depending if something was delete
 ![img](https://i.imgur.com/AuSpEeU.png)
 </details>
 The Service microservice is used to create, list, delete, technicians; and create, list, delete, and edit appoinments. It stores the first name, last name, and employee id of a technician; and stores the vin of the automobile being serviced, customer, date/time, technician, and reason for visit of an appointment. It uses a poller to get a list of automobiles in inventory from the Inventory microservice and stores each of their vins and whether or not they have been sold in an automobile value object or AutomobileVO. This AutomobileVO is used when listing service history to identify which appointments are VIP appointments.
+
 #### `Technicians`
 | Action | Method | URL
 | ----------- | ----------- | ----------- |
