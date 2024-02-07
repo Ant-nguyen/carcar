@@ -50,10 +50,11 @@ function AppointmentHistory() {
 
     return (
         <div className="my-5 container">
-            <div className="form-floating mb-3">
+            <div className="form-floating mb-3" style={{ display: 'flex' }}>
                 <input value={vin} onChange={handleVinChange} placeholder="Vin" required type="text" id="vin" className="form-control"
                     name="vin" />
                 <label htmlFor="vin">Vin</label>
+                <button className="btn btn-success" onClick={() => console.log('This button does nothing since the form updates dynamically :)')}>Search</button>
             </div>
             <div className="offset-3 col-6">
                 <table className="table table-striped">
