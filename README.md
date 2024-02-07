@@ -507,8 +507,8 @@ JSON Body should look like:
   "vin": "1N45HUI3H4JJI",
   "customer": "Dash",
   "date_time": "2024-02-06T14:30:00.000Z",
-	"technician": 2,
-	"reason": "oil change"
+  "technician": 2,
+  "reason": "oil change"
 }
 ```
 JSON response will look like:
