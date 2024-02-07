@@ -6,10 +6,16 @@ function CustomerList(){
   let fetchCustomer = async()=>{
     let url = "http://localhost:8090/api/customers/"
     let response = await fetch(url)
-    if(response.ok){
-      let data = await response.json()
-      setCustomers(data.customers)
-    }
+    try{
+      if(response.ok){
+        let data = await response.json()
+        setCustomers(data.customers)
+      }else {
+        console.error('Error:', response.status, response.statusText)
+      }
+    }catch(error){
+        console.error('Error', error.message)
+      }
   }
 
   useEffect(()=>{fetchCustomer()},[])

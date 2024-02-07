@@ -20,15 +20,23 @@ function CustomerForm(){
       body:JSON.stringify(customerForm),
       headers:{'Content-Type': 'application/json'}
     }
+    
     let response = await fetch(url,fetchConfig)
-    if (response.ok){
-      setCustomerForm({
-        first_name:"",
-        last_name:"",
-        address:"",
-        phone_number:""
-      })
+    try{
+      if (response.ok){
+        setCustomerForm({
+          first_name:"",
+          last_name:"",
+          address:"",
+          phone_number:""
+        })
+    }else {
+      console.error('Error:', response.status, response.statusText)
     }
+    }catch(error){
+      console.error('Error', error.message)
+    }
+
   }
   return(
     <div className="my-5 container">
