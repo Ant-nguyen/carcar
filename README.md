@@ -222,7 +222,7 @@ JSON response
 }
 ```
 
-D. PUT |` http://localhost:8100/api/models/id/`
+D. PUT |`http://localhost:8100/api/models/id/`
 JSON Body for POST should look like example below:
 ```json
 {
